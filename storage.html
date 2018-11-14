@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <script>
+			// Set initial value of counter = 0 in case the variable did not exist
+			if (!localStorage.getItem('counter')) {
+				localStorage.setItem('counter', 0);
+			};
+			// Load current value of counter
+			document.addEventListener('DOMContentLoaded', function(){
+				document.querySelector('#counter').innerHTML = localStorage.getItem('counter');
+				// Function for button-click
+				document.querySelector('button').onclick = ()=>{
+					let counter = localStorage.getItem('counter');
+					counter++;
+					// Update counter, both displaying and storage
+					document.querySelector('#counter').innerHTML = counter;
+					localStorage.setItem('counter', counter);
+				};
+			});
+    </script>
+		<title>My website</title>
+	</head>
+	<body>
+		<h1 id="counter">0</h1>
+    <button>Click here!</button>
+	</body>
+</html>
