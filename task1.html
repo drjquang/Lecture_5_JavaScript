@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <script>
+			document.addEventListener('DOMContentLoaded', function(){
+				// This code handles empty input text by disable and enable button
+				document.querySelector('#submit').disabled = true;
+				document.querySelector('#task').onkeydown = ()=>{
+					document.querySelector('#submit').disabled = false;
+				};
+				// This code handles form submitting
+				document.querySelector('#new-task').onsubmit = ()=>{
+					// Create new list item with innerHTML got from input text
+					const li = document.createElement('li');
+					li.innerHTML = document.querySelector('#task').value;
+					// Binding list item to un-ordered list by appending
+					document.querySelector('#tasks').append(li);
+					// Clear the input text, focus and disable submit button again
+					document.querySelector('#task').value = '';
+					document.querySelector('#task').focus();
+					document.querySelector('#submit').disabled = true;
+					// Stop from submitting
+					return false;
+				};
+			});
+		</script>
+		<title>Tasks</title>
+	</head>
+	<body>
+		<h1>Tasks</h1>
+    <ul id="tasks"></ul>
+		<form id="new-task">
+			<input type="text" id="task" autocomplete="off" autofocus placeholder="Enter new task">
+			<input type="submit" id="submit" value="Add to list">
+		</form>
+	</body>
+</html>
